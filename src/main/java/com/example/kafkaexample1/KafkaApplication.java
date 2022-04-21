@@ -1,5 +1,7 @@
 package com.example.kafkaexample1;
 
+import com.example.kafkaexample1.dto.Order;
+import com.google.gson.Gson;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +17,9 @@ public class KafkaApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate) {
 		return args -> {
-				kafkaTemplate.send("main", "CommandLineRunner: Kafka is Up!");
+			Gson gson = new Gson();
+			Order order = new Order();
+			kafkaTemplate.send("orders", gson.toJson(order));
 		};
 	}
 }

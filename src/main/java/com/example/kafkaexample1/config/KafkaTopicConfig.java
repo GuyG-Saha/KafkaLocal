@@ -12,4 +12,7 @@ public class KafkaTopicConfig {
     public NewTopic mainTopic() {
         return TopicBuilder.name("main").build();
     }
+
+    @Bean
+    public NewTopic JsTopic() { return TopicBuilder.name("orders").build(); }
 }

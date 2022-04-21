@@ -18,8 +18,8 @@ public class KafkaListeners {
         System.out.println("Listener2 received: " + data);
     }
 
-    @KafkaListener(topics = "main", groupId = "3")
-    void thirdListener(String data) {
-        System.out.println("message: " + data + " received at: " + Calendar.getInstance().getTime());
+    @KafkaListener(topics = "orders", groupId = "3")
+    void JsListener(String data) {
+        System.out.println("Consumed message: " + data);
     }
 }
