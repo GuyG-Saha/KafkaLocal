@@ -1,18 +1,24 @@
 package com.example.kafkaexample1.dto;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class Order {
 
+    private static Long idGenerator = 99L;
     private Long Id;
-    private Calendar calendar;
+    private Calendar timestamp;
     private String description;
 
     public Order() {
-        Id = 1L;
-        calendar = Calendar.getInstance();
+        Id = ++idGenerator;
+        timestamp = Calendar.getInstance();
         description = "Order placed!";
+    }
+
+    public Order(String description) {
+        Id = 2L;
+        timestamp = Calendar.getInstance();
+        this.description = description;
     }
 
     public Long getId() {
@@ -23,12 +29,12 @@ public class Order {
         Id = id;
     }
 
-    public Calendar getCalendar() {
-        return calendar;
+    public Calendar getTimestamp() {
+        return timestamp;
     }
 
-    public void setCalendar(Calendar calendar) {
-        this.calendar = calendar;
+    public void setTimestamp(Calendar timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getDescription() {
@@ -43,7 +49,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "Id= " + Id +
-                ", calendar=" + calendar.getTime() +
+                ", timestamp=" + timestamp.getTime() +
                 ", description='" + description + '\'' +
                 '}';
     }

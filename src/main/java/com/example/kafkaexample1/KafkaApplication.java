@@ -18,7 +18,7 @@ public class KafkaApplication {
 	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate) {
 		return args -> {
 			Gson gson = new Gson();
-			Order order = new Order();
+			Order order = new Order("CommandLineRunner trigger");
 			kafkaTemplate.send("orders", gson.toJson(order));
 		};
 	}
